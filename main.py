@@ -14,7 +14,7 @@ api_id = os.environ.get("ID", "")
 app = Client("my_bot",api_id=api_id, api_hash=api_hash,bot_token=bot_token)  
 
 # Optional ENVs
-GDTot_Crypt = os.environ.get("CRYPT","b0lDek5LSCt6ZjVRR2EwZnY4T1EvVndqeDRtbCtTWmMwcGNuKy8wYWpDaz0%3D")
+GDTot_Crypt = os.environ.get("CRYPT","MVlCa3M1b2xrY1loaHpxUWxLWXBtS0dMZVA4b3ZSY2J0ZWJjOW1vV0c4UT0%3D")
 Laravel_Session = os.environ.get("Laravel_Session","")
 XSRF_TOKEN = os.environ.get("XSRF_TOKEN","")
 KCRYPT = os.environ.get("KOLOP_CRYPT","")
@@ -44,28 +44,28 @@ def mainthread(cmd,message):
            
            
     # gdtot url
-    elif cmd == "/gt":
-        print("Entered Link gdtot:",url)
-        msg = app.send_message(message.chat.id, "🔎 __Bypassing your gdtot URL...__", reply_to_message_id=message.id)
+    elif cmd == "/gd":
+        print("Entered gdtot Link:",url)
+        msg = app.send_message(message.chat.id, "🔎Generating gdrive link for your **gdtot** URL...", reply_to_message_id=message.id)
         link = bypasser.gdtot(url,GDTot_Crypt)
         
 
 
-    # gdrive look alike
-    elif cmd == "/gd":
-        print("You Have Entered gdrive:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
+    # appdrive look alike links
+    elif cmd == "/app":
+        print("Entered appdrive-look-alike link:",url)
+        msg = app.send_message(message.chat.id, "🔎Generating gdrive link, please wait...", reply_to_message_id=message.id)
         link = bypasser.unified(url)
 
   
     # finnaly
     try:
-        app.edit_message_text(message.chat.id, msg.id, f'__{link}__')
+        app.edit_message_text(message.chat.id, msg.id, f'**Original Link**- {url}\n\n**Gdrive link**- {link}')
     except:
-        app.edit_message_text(message.chat.id, msg.id, "__Failed to Bypass__")
+        app.edit_message_text(message.chat.id, msg.id, "❌Failed to Bypass.")
 
 
-AvailableCommands = ['ol','sc','dl','kd','hd','df','ko','fc','su','sg','gy','pi','st','ps','sh','gt','af','gp','dp','lv','rl','ou','gd','ot']
+AvailableCommands = ['dl','gd','app']
 # commands
 @app.on_message(filters.command(AvailableCommands))
 def receive(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
@@ -76,39 +76,18 @@ def receive(client: pyrogram.client.Client, message: pyrogram.types.messages_and
 # start command
 @app.on_message(filters.command(["start"]))
 def send_welcome(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
-    app.send_message(message.chat.id, "🔗 **Available Sites** \n\n  \
- `/dl` - __direct download link (/ddllist)__ \n  \
- `/af` - __adfly__ \n  \
- `/gp` - __gplinks__ \n  \
- `/dp` - __droplink__ \n  \
- `/lv` - __linkvertise__ \n  \
- `/rl` - __rocklinks__ \n  \
- `/gd` - __gdrive look-alike (/gdlist)__ \n  \
- `/ot` - __others (/otlist)__ \n  \
- `/ou` - __ouo__ \n  \
- `/gt` - __gdtot__ \n  \
- `/sh` - __sharer__ \n  \
- `/ps` - __psa__ \n  \
- `/st` - __shorte__ \n  \
- `/pi` - __pixl__ \n  \
- `/gy` - __gyanilinks__ \n  \
- `/sg` - __shortingly__ \n  \
- `/su` - __shareus__ \n  \
- `/fc` - __filecrypt__ \n  \
- `/ko` - __kolop__ \n  \
- `/df` - __drivefire__ \n  \
- `/hd` - __hubdrive__ \n  \
- `/kd` - __katdrive__ \n  \
- `/sc` - __script links__ \n  \
- `/ol` - __olamovies__ \n\n\
-__reply to the link with command or use format /xx link__",
+    app.send_message(message.chat.id, "🔗 **Available commands** \n\n  \
+ /dl - __direct download link (/ddllist)__ \n  \
+ /app - __appdrive look-alike links (/applist)__ \n  \
+ /gd - __gdtot links__ \n\n
+reply to the link with command or use inline format /cmd link",
 reply_to_message_id=message.id)
 
 
-# gd list
-@app.on_message(filters.command(['gdlist']))
+# app list
+@app.on_message(filters.command(['applist']))
 def gdlis(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
-    list = """__- appdrive.in \n\
+    list = """**Supported sites**\n\n- appdrive.in \n\
 - driveapp.in \n\
 - drivehub.in \n\
 - gdflix.pro \n\
@@ -116,8 +95,7 @@ def gdlis(client: pyrogram.client.Client, message: pyrogram.types.messages_and_m
 - drivebit.in \n\
 - drivelinks.in \n\
 - driveace.in \n\
-- drivepro.in \n\
-          __"""
+- drivepro.in \n\"""
     app.send_message(message.chat.id, list, reply_to_message_id=message.id)
 
 
