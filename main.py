@@ -95,7 +95,8 @@ def gdlis(client: pyrogram.client.Client, message: pyrogram.types.messages_and_m
 - drivebit.in \n\
 - drivelinks.in \n\
 - driveace.in \n\
-- drivepro.in \n\"""
+- drivepro.in \n\
+"""
     app.send_message(message.chat.id, list, reply_to_message_id=message.id)
 
 
