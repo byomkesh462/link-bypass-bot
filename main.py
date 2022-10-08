@@ -35,175 +35,21 @@ def mainthread(cmd,message):
             app.send_message(message.chat.id, f"⚠️ __Invalid format, either__ **reply** __to a__ **link** __or use like this ->__ **{cmd} link**", reply_to_message_id=message.id)
             return
 
-    # ola movies
-    if cmd == "/ol":
-        print("You Have Entered ola movies:",url)
-        msg = app.send_message(message.chat.id, "🔎 __this might take some time...__", reply_to_message_id=message.id)
-        link = bypasser.olamovies(url)
-        
-    # script links
-    elif cmd == "/sc":
-        print("You Have Entered script link:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        try:
-            link = bypasser.getfirst(url)
-        except:
-            sess = requests.session()
-            link = bypasser.getfinal(f'https://{url.split("/")[-2]}/',url, sess)
         
     # direct download link
     elif cmd == "/dl":
         print("You Have Entered ddl:",url)
         msg = app.send_message(message.chat.id, "⚡ __generating...__", reply_to_message_id=message.id)
         link = ddl.direct_link_generator(url)
-        
-    # katdrive
-    elif cmd == "/kd":
-        if KATCRYPT == "":
-            app.send_message(message.chat.id, "🚫 __You can't use this because__ **KATDRIVE_CRYPT** __ENV is not set__", reply_to_message_id=message.id)
-            return
-
-        print("Entered Link katdrive:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.katdrive_dl(url, KATCRYPT)
-        
-
-    # hubdrive
-    elif cmd == "/hd":
-        if HCRYPT == "":
-            app.send_message(message.chat.id, "🚫 __You can't use this because__ **HUBDRIVE_CRYPT** __ENV is not set__", reply_to_message_id=message.id)
-            return
-
-        print("Entered Link hubdrive:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.hubdrive_dl(url, HCRYPT)
-        
-
-    # drivefire
-    elif cmd == "/df":
-        if DCRYPT == "":
-            app.send_message(message.chat.id, "🚫 __You can't use this because__ **DRIVEFIRE_CRYPT** __ENV is not set__", reply_to_message_id=message.id)
-            return
-
-        print("Entered Link drivefire:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.drivefire_dl(url, DCRYPT)
-        
-
-    # kolop
-    elif cmd == "/ko":
-        if KCRYPT == "":
-            app.send_message(message.chat.id, "🚫 __You can't use this because__ **KOLOP_CRYPT** __ENV is not set__", reply_to_message_id=message.id)
-            return
-
-        print("Entered Link kolop:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.kolop_dl(url, KCRYPT)
-        
-
-    # filecrypt
-    elif cmd == "/fc":
-        print("You Have Entered filecrypt:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.filecrypt(url)
-        
-
-    # shareus
-    elif cmd == "/su":
-        print("You Have Entered shareus:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.shareus(url)
-        
-
-    # shortingly
-    elif cmd == "/sg":
-        print("You Have Entered shortingly:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.shortlingly(url)
-        
-
-    # gyanilinks
-    elif cmd == "/gy":
-        print("You Have Entered gyanilinks:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.gyanilinks(url)
-        
-
-    # pixl
-    elif cmd == "/pi":
-        print("You Have Entered pixl:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.pixl(url)
-        
-
-    # shorte
-    elif cmd == "/st":
-        print("You Have Entered shorte:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.sh_st_bypass(url)
-        
-
-    # psa
-    elif cmd == "/ps":
-        print("You Have Entered psa:",url)
-        msg = app.send_message(message.chat.id, "🔎 __this might take some time...__", reply_to_message_id=message.id)
-        link = bypasser.psa_bypasser(url)
-        
-
-    # sharer pw
-    elif cmd == "/sh":
-        if XSRF_TOKEN == "" or Laravel_Session == "":
-            app.send_message(message.chat.id, "🚫 __You can't use this because__ **XSRF_TOKEN** __and__ **Laravel_Session** __ENV is not set__", reply_to_message_id=message.id)
-            return
-
-        print("Entered Link sharer:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.sharer_pw(url, Laravel_Session, XSRF_TOKEN)
-        
-
+           
+           
     # gdtot url
     elif cmd == "/gt":
         print("Entered Link gdtot:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
+        msg = app.send_message(message.chat.id, "🔎 __Bypassing your gdtot URL...__", reply_to_message_id=message.id)
         link = bypasser.gdtot(url,GDTot_Crypt)
         
 
-    # adfly
-    elif cmd == "/af":
-        print("You Have Entered adfly:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        out = bypasser.adfly(url)
-        link = out['bypassed_url']
- 
-    # gplinks
-    elif cmd == "/gp":
-        print("Entered Link gplink:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.gplinks(url)
-        
-    # droplink
-    elif cmd == "/dp":
-        print("You Have Entered droplink:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.droplink(url)
-        
-    # linkvertise
-    elif cmd == "/lv":
-        print("You Have Entered linkvertise:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.linkvertise(url)
-        
-    # rocklinks
-    elif cmd == "/rl":
-        print("You Have Entered rocklinks:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.rocklinks(url)
-        
-    # ouo
-    elif cmd == "/ou":
-        print("You Have Entered ouo:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.ouo(url)
 
     # gdrive look alike
     elif cmd == "/gd":
@@ -211,12 +57,7 @@ def mainthread(cmd,message):
         msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
         link = bypasser.unified(url)
 
-    # others
-    elif cmd == "/ot":
-        print("You Have Entered others:",url)
-        msg = app.send_message(message.chat.id, "🔎 __bypassing...__", reply_to_message_id=message.id)
-        link = bypasser.others(url)
-
+  
     # finnaly
     try:
         app.edit_message_text(message.chat.id, msg.id, f'__{link}__')
