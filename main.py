@@ -79,8 +79,8 @@ def send_welcome(client: pyrogram.client.Client, message: pyrogram.types.message
     app.send_message(message.chat.id, "🔗 **Available commands** \n\n  \
  /dl - __direct download link (/ddllist)__ \n  \
  /app - __appdrive look-alike links (/applist)__ \n  \
- /gd - __gdtot links__ \n\n
-reply to the link with command or use inline format /cmd link",
+ /gd - __gdtot links__ \n\n\
+reply to the link with command or use inline format \cmd link",
 reply_to_message_id=message.id)
 
 
