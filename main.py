@@ -37,7 +37,7 @@ def mainthread(cmd,message):
 
         
     # direct download link
-    elif cmd == "/dl":
+    if cmd == "/dl":
         print("You Have Entered ddl:",url)
         msg = app.send_message(message.chat.id, "⚡ __generating...__", reply_to_message_id=message.id)
         link = ddl.direct_link_generator(url)
